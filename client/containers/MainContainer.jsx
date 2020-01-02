@@ -43,13 +43,13 @@ const mapDispatchToProps = dispatch => ({
     dispatch(toggleAddTipsButton())
   },
 
-}) 
+})
 
 const mapStateToProps = state => ({
   addTipsBoolean: state.tips.toggleAddTipsButton,
-  zipCode : state.tips.zipCode,
-  currentTips : state.tips.currentTips
-  
+  zipCode: state.tips.zipCode,
+  currentTips: state.tips.currentTips
+
 });
 
 
@@ -62,9 +62,9 @@ class MainContainer extends Component {
     return (
       <div id='container'>
         <Banner />
-        <Search 
-          toggleAddTipsButton = {this.props.toggleAddTipsButton}
-          addTipsBoolean = {this.props.addTipsBoolean}
+        <Search
+          toggleAddTipsButton={this.props.toggleAddTipsButton}
+          addTipsBoolean={this.props.addTipsBoolean}
           getZipCode={this.props.getZipCode}
           getLocalTips={this.props.getLocalTips}
         />

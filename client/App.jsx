@@ -10,9 +10,9 @@ class App extends Component {
   }
 
   render() {
-    return(
-      <div style={{height:'100%'}}>
-        <Provider store = { store } >
+    return (
+      <div style={{ height: '100%' }}>
+        <Provider store={store} >
           <MainContainer />
         </Provider>
       </div>
