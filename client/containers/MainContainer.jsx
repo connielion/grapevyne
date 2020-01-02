@@ -6,15 +6,14 @@ import Banner from '../components/Banner.jsx';
 import Search from '../components/Search.jsx';
 import TagsBox from '../components/TagsBox.jsx';
 import TipsContainer from './TipsContainer.jsx';
-import { getZipCode, upvote, downvote, getDummyTips, toggleAddTipsButton } from '../actions/actions';
-import { fetchTips, fetchTags  } from '../actions/actionsFunctions'
+import { getZipCode, getLocalTips, upvote, downvote, getDummyTips, toggleAddTipsButton, } from '../actions/actions';
+import { fetchTips } from '../actions/fetchTips'
 
 
 const mapStateToProps = state => ({
   addTipsBoolean: state.tips.toggleAddTipsButton,
   zipCode: state.tips.zipCode,
-  currentTips: state.tips.currentTips,
-  tagList: state.tips.tagList,
+  currentTips: state.tips.currentTips
 });
 
 const mapDispatchToProps = dispatch => ({
@@ -33,22 +32,14 @@ const mapDispatchToProps = dispatch => ({
   toggleAddTipsButton: () => {
     dispatch(toggleAddTipsButton())
   },
-  fetchTips: (zip) => { 
+  getLocalTips: (zip) => {
     dispatch(fetchTips(zip))
-  },
-  fetchTags: () => { 
-    dispatch(fetchTags())
   }
 })
 
 class MainContainer extends Component {
   constructor(props) {
     super(props);
-  }
-
-  componentDidMount() { 
-    //fetch tags when component mount:
-    this.props.fetchTags();
   }
 
   render() {
@@ -59,8 +50,8 @@ class MainContainer extends Component {
           toggleAddTipsButton={this.props.toggleAddTipsButton}
           addTipsBoolean={this.props.addTipsBoolean}
           getZipCode={this.props.getZipCode}
-          fetchTips={this.props.fetchTips}
-          zipCode = {this.props.zipCode}
+          getLocalTips={this.props.getLocalTips}
+          zipCode={this.props.zipCode}
         />
         <TagsBox />
         <TipsContainer
@@ -68,6 +59,7 @@ class MainContainer extends Component {
           getDummyTips={this.props.getDummyTips}
           upvote={this.props.upvote}
           downvote={this.props.downvote}
+          zipCode={this.props.zipCode}
         />
       </div>
     )

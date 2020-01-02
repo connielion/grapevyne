@@ -25,7 +25,7 @@ const tipsReducer = (state = initialState, action) => {
     case types.GET_ZIP_CODE:
       if (action.payload) {
         zipCode = action.payload;
-
+        console.log(`zipCode: `, zipCode)
         return {
           ...state,
           zipCode,

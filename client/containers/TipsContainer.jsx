@@ -18,7 +18,8 @@ class TipsContainer extends Component {
   }
 
   render() {
-    return (
+    //console.log(this.props.zipCode)
+    const DisplayError = (this.props.zipCode.length === 0) ? (<div style={{ color: 'whitesmoke', marginTop: '20px' }}>Please enter a valid ZIP code.</div>) : (
       <div className="tips-container flex flex-wrap">
         {this.props.currentTips.map(el => {
           let parsedTime = this.parseTimestamp(el.timestamp);
@@ -34,11 +35,11 @@ class TipsContainer extends Component {
             tags={el.tags}
             upvote={this.props.upvote}
             downvote={this.props.downvote}
-
           />
         })}
       </div>
-    )
+    );
+    return (<div>{DisplayError}</div>)
   }
 }
 
