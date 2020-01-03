@@ -43,10 +43,8 @@ const tipsReducer = (state = initialState, action) => {
 
       currentTips = [...state.currentTips]
       for (let i = 0; i < currentTips.length; i++) {
-        console.log(`UPVOTE ID: `, currentTips[i].tipId)
         if (currentTips[i].id === action.payload) {
           currentTips[i].votes += 1;
-          console.log('UPVOTED', currentTips[i].header);
           //ADD DATABASE UPVOTE PUT-LOGIC HERE
           //POTENTIALLY UPDATE STATE TO AVOID A SECOND /GET REQUEST??
           fetch(`/tips/updateVotes/${currentTips[i].tipId}`, {
@@ -71,13 +69,12 @@ const tipsReducer = (state = initialState, action) => {
 
       currentTips = [...state.currentTips]
       for (let i = 0; i < currentTips.length; i++) {
-        console.log(`ID: `, currentTips[i].tipId)
         if (currentTips[i].tipId === action.payload) {
           currentTips[i].votes--;
-          console.log('DOWNVOTED', currentTips[i].header);
+          // console.log('DOWNVOTED', currentTips[i].header);
           //ADD DATABASE UPVOTE PUT-LOGIC HERE
           //POTENTIALLY UPDATE STATE TO AVOID A SECOND /GET REQUEST??
-          console.log('currentTips[i] and its id: ', currentTips[i], `id:`, currentTips[i].tipId)
+          // console.log('currentTips[i] and its id: ', currentTips[i], `id:`, currentTips[i].tipId)
           fetch(`/tips/updateVotes/${currentTips[i].tipId}`, {
             method: "POST",
             header: {
